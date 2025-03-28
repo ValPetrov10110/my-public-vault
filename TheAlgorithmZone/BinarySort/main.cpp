@@ -9,7 +9,7 @@ int main(){
     std::array<int, 6> theList = {1, 2, 4, 3, 5, 6};
     
     std::array<int, 2> theValues = bubbleSort(theList);
-    std::cout << theValues[0] << " and " << theValues[1] << std::endl; //Test Line
+    std::cout << "### VALUES SORTED ###\nIterations : " << theValues[0] << "\nSwaps Performed: " << theValues[1] << std::endl;
 
     return 0;
 }
