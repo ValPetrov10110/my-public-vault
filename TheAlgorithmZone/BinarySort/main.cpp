@@ -2,23 +2,51 @@
 #include <iostream>
 
 std::array<int, 2> bubbleSort(std::array<int, 6>& theList);
-void binarySearch();
+int binarySearch(std::array<int, 6>& theList, int num);
 
 int main(){
 
+    int num;
     std::array<int, 6> theList = {1, 2, 4, 3, 5, 6};
     
     std::array<int, 2> theValues = bubbleSort(theList);
     std::cout << "### VALUES SORTED ###\nIterations : " << theValues[0] << "\nSwaps Performed: " << theValues[1] << std::endl;
+    std::cout << '\n';
+    std::cout << "Enter Value To Find: ";
+    std::cin >> num;
+
+    int value = binarySearch(theList, num);
+    
+    if(value >= 0){
+        std::cout << "Located At Index " << value << std::endl;
+    }
 
     return 0;
 }
 
-void binarySearch(){
+int binarySearch(std::array<int, 6>& theList, int num){
+    int l = 0;
+    int r = 5;
+    int midpoint;
 
+    while(l <= r){
+        midpoint = l + (r - l) / 2;
+        if(theList[midpoint] == num){
+            std::cout << "Value Identified" << std::endl;
+            return midpoint;
+        }
+        else if(theList[midpoint] > num){
+            r = midpoint - 1;
+        }
+        else{
+            l = midpoint + 1;
+        }
+    }
+
+    std::cout << "Value Not Deteced" << std::endl;
+    return -1;
 }
 
-// Function in question
 std::array<int, 2> bubbleSort(std::array<int, 6>& theList){
     int iNum = 0;
     int sNum = 0;
